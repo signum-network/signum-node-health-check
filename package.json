@@ -1,8 +1,12 @@
 {
   "name": "signum-node-health-check",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "engines": {
     "node": "14"
+  },
+  "repository": {
+    "url": "https://github.com/signum-network/signum-node-health-check",
+    "type": "github"
   },
   "description": "A health checker for Signum Network nodes",
   "bin": {

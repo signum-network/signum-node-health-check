@@ -13,9 +13,10 @@ const opts = program
 
 (async () => {
   try {
-    return await checkNode(opts)
+    await checkNode(opts)
+    console.info('✅ All fine')
   } catch (e) {
-    console.error(new Date().toISOString(), 'Health Check failed', e)
+    console.error('❌', new Date().toISOString(), 'Health Check failed', e)
     if(opts.script){
       await execAsync(opts.script, [e])
     }
