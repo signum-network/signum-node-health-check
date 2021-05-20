@@ -1,0 +1,27 @@
+{
+  "name": "signum-node-health-check",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14"
+  },
+  "description": "A health checker for Signum Network nodes",
+  "bin": {
+    "signumhealth": "./cli.js"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "format": "standard"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^7.2.0",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.6.0"
+  },
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "standard": "^16.0.3"
+  }
+}
