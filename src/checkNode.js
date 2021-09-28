@@ -5,7 +5,7 @@ function isStuck ({ numberOfBlocks, lastBlockchainFeederHeight }) {
 }
 
 function isSyncedWithReferenceNode ({ status, referenceStatus }) {
-  return status.numberOfBlocks - referenceStatus.numberOfBlocks <= 1
+  return Math.abs(status.numberOfBlocks - referenceStatus.numberOfBlocks) <= 1
 }
 
 async function fetchBlockChainStatus ({ node }) {
