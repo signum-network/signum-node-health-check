@@ -19,10 +19,9 @@ Usage: signumhealth [options]
 Options:
   -V, --version              output the version number
   -n, --node <url>           Signum Node Host
-  -s, --script <scriptPath>  A path to an executable command or script to be
-                             executed on failed health check
-  -r, --referenceNode <url>  A reference node to compare to (default:
-                             "https://wallet.burstcoin.ro")
+  -s, --script <scriptPath>  A path to an executable command or script to be executed on failed health check
+  -r, --referenceNode <url>  A reference node to compare to (default: "https://europe.signum.network")
+  --nosslcheck               Disables ssl check
   -h, --help                 display help for command
 ```
 
@@ -31,21 +30,32 @@ Options:
 ### Checking current state
 
 ```bash
-$ signumhealth -n https://brazil.signum.network
-
-# 2021-05-20T20:47:17.090Z https://brazil.signum.network 884947 https://wallet.burstcoin.ro 884947
-# ✅ All fine
+signumhealth  -n https://brazil.signum.network
+2022-10-06T12:53:42.300Z
+https://brazil.signum.network - height: 1066154
+https://europe.signum.network - height: 1066154
+Signature Check:
+https://brazil.signum.network - signature (height: 1066154): 610998114ebea5594846c88ace5321e0046a6ca6c55a35824d2762076bab3a0654350a98ef5721ee6926fb1dc65fc65a0391d00b29f6a7e5309c1667de51600b
+https://europe.signum.network - signature (height: 1066154): 610998114ebea5594846c88ace5321e0046a6ca6c55a35824d2762076bab3a0654350a98ef5721ee6926fb1dc65fc65a0391d00b29f6a7e5309c1667de51600b
+✅ Nodes are in sync
 ```
 
-In case of error it might look something like this
+Or maybe this
 
 ```bash
-2021-05-20T20:43:07.953Z https://brazil.signum.network 884940 https://wallet.burstcoin.ro 884946
-2021-05-20T20:43:07.957Z Health Check failed Error: Nodes [https://brazil.signum.network] and [https://wallet.burstcoin.ro] are not synced
-    at checkNode (/home/ohager/.nvm/versions/node/v14.12.0/lib/node_modules/signum-node-health-check/src/checkNode.js:37:11)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async /home/ohager/.nvm/versions/node/v14.12.0/lib/node_modules/signum-node-health-check/src/index.js:16:12
+signumhealth  -n  https://cyb3rsignum.freeddns.org:8125 
+2022-10-06T12:53:42.300Z
+https://cyb3rsignum.freeddns.org:8125 - height: 1005841
+https://europe.signum.network - height: 1066155
+Node [https://cyb3rsignum.freeddns.org:8125] is 60314 block(s) behind of Node [https://europe.signum.network] - syncing...
+Signature Check:
+https://cyb3rsignum.freeddns.org:8125 - signature (height: 1005841): 0de5c6c5d1ce17f5232c615e7548beecdb1197279cbc1f978c2cd47ec757b5063d6779c9c5c8db63ac34ebf4137107df9492ddadd84ba71e646d3187d0a1ba44
+https://europe.signum.network - signature (height: 1005841): 0de5c6c5d1ce17f5232c615e7548beecdb1197279cbc1f978c2cd47ec757b5063d6779c9c5c8db63ac34ebf4137107df9492ddadd84ba71e646d3187d0a1ba44
+⏳ https://cyb3rsignum.freeddns.org:8125 is still syncing, but all looks good.
 ```
+
+In case of error it exits with code: -1 
+
 
 ### Executing a script in case of error
 
