@@ -20,12 +20,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^7.2.0",
-    "node-fetch": "^2.6.1",
-    "nodemailer": "^6.6.0"
+    "commander": "^9.4.1",
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
-    "husky": "^6.0.0",
-    "standard": "^16.0.3"
+    "husky": "^8.0.1",
+    "standard": "^17.0.0"
   }
 }
